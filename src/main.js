@@ -1,4 +1,5 @@
-import express from 'express'
+import express, { json } from 'express'
+import cors from 'cors'
 //import do login
 import logincontroller from './Controllers/login.js'
 
@@ -28,9 +29,10 @@ import{
 /////////////////////////////////////////
 const app = express()
 const port = 3000
-
+console.log('oi')
 app.use (express.json())
-
+console.log('oi')
+app.use(cors())
 //ROTAS
 
 //inicio

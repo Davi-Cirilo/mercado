@@ -9,8 +9,8 @@ export const getPedidoController = (req, res) => {
       comandosql += ' WHERE id = ?'
       paramssql.push(id)
   }
-  console.log('ID recebido:', id)
-    db.get( comandosql, paramssql, (err, row)=>{
+  console.log('ID recebido:', Number(id))
+    db.all ( comandosql, paramssql, (err, row)=>{
       if (err) {
         console.log('Erro ao encontrar Pedido', err)
         return res.status(500).json({ mensagem: 'Erro ao buscar pedido' })
@@ -27,11 +27,11 @@ export const getPedidoController = (req, res) => {
 /////////////////////////////////////////////////////////////////////
 export const postPedidoController = (req, res) => {
   try {
-    const { idCliente, idProduto, data } = req.body;
-
+    const { cliente_id, produto_id, data, valor, formapagamento } = req.body;
+    console.log(cliente_id, produto_id, data, valor, formapagamento)
     db.run(
-      'INSERT INTO pedidos (cliente_id, produto_id, data) VALUES (?, ?, ?)',
-      [idCliente, idProduto, data],
+      'INSERT INTO pedidos (cliente_id, produto_id, data, valor, formapagamento) VALUES (?, ?, ?, ?,?)',
+      [cliente_id, produto_id, data, valor, formapagamento],
       function (err) {
         if (err) {
           console.log('Erro ao adicionar pedido:', err);
@@ -47,11 +47,11 @@ export const postPedidoController = (req, res) => {
 /////////////////////////////////////////////////////////////////////  
 export const putPedidoController = (req, res) => {
   try {
-    const { id, idCliente, idProduto, data } = req.body;
+    const { id, idCliente, idProduto, data, valor, formapagamento } = req.body;
 
     db.run(
-      'UPDATE pedidos SET cliente_id = ?, produto_id = ?, data = ? WHERE id = ?',
-      [idCliente, idProduto, data, id],
+      'UPDATE pedidos SET cliente_id = ?, produto_id = ?, data = ?, formapagamento = ?, valor = ? WHERE id = ?',
+      [idCliente, idProduto, data, formapagamento, valor, id],
       function (err) {
         if (err) {
           console.log('Erro ao atualizar pedido:', err)

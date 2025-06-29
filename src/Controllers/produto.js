@@ -9,7 +9,7 @@ export const getProdutoController = (req, res) => {
       comandosql += ' WHERE id = ?'
       paramssql.push(idProduto)
   }
-    db.get(comandosql, paramssql, (err, row) => {
+    db.all(comandosql, paramssql, (err, row) => {
       if (err) {
         console.log('Erro ao encontrar produto', err);
         return res.status(500).json({ mensagem: 'Erro ao buscar produto' })
