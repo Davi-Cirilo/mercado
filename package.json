@@ -1,0 +1,24 @@
+{
+  "name": "mercado",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Davi-Cirilo/mercado#readme",
+  "bugs": {
+    "url": "https://github.com/Davi-Cirilo/mercado/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davi-Cirilo/mercado.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
